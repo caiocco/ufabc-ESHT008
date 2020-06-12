@@ -1,0 +1,335 @@
+%% abtex2-modelo-artigo.tex, v-1.9.6 laurocesar
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-artigo.tex and
+%% abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+%  abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+%  ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+%  periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+% -- opções da classe memoir --
+article,			% indica que é um artigo acadêmico
+11pt,				% tamanho da fonte
+oneside,			% para impressão apenas no recto. Oposto a twoside
+a4paper,			% tamanho do papel. 
+% -- opções da classe abntex2 --
+%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+brazil,				% o último idioma é o principal do documento
+sumario=tradicional
+]{abntex2}
+
+\setlength\afterchapskip{\lineskip}
+
+% ---
+%  PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage[dvipsnames]{xcolor}	% Controle das cores
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{glossaries}			% solução de glossário
+\usepackage{nameref}			% referenciar também pelo nome
+% ---
+
+% ---
+%  Pacotes de perfumaria
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+%  Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% ---
+
+% ---
+%  Configurações do pacote backref
+%  Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+%  Configurações do pacote glossaries
+\renewcommand*{\glsclearpage}{}
+% ---
+
+% ---
+%  Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Fichamento para a disciplina de de Governança Pública, Democracia e Políticas no Território}
+\autor{Caio César Carvalho Ortega}
+\local{São Paulo, SP}
+\data{04/05/2020}
+% ---
+
+% ---
+%  Configurações de aparência do PDF final e informações do PDF
+\makeatletter
+\hypersetup{
+	%pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+	pdfsubject={},
+	pdfcreator={LaTeX with abnTeX2},
+	pdfkeywords={}, 
+	colorlinks=true,		% false: boxed links; true: colored links
+	linkcolor=Plum,			% color of internal links
+	citecolor=Blue,			% color of links to bibliography
+	filecolor=Red,			% color of file links
+	urlcolor=Red,
+	bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+%  compila o glossário
+% ---
+%\makeglossaries
+
+% \newglossaryentry{ex}{name={sample},description={an example}}
+
+% ---
+
+% ---
+%  compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+%  Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+%  Espaçamentos entre linhas e parágrafos 
+% --- 
+
+%  O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+%  Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+%  Espaçamento simples
+\SingleSpacing
+
+% ----
+%  Início do documento
+% ----
+\begin{document}
+	
+	% Seleciona o idioma do documento (conforme pacotes do babel)
+	%\selectlanguage{english}
+	\selectlanguage{brazil}
+	
+	% Retira espaço extra obsoleto entre as frases.
+	\frenchspacing 
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PRÉ-TEXTUAIS
+	% ----------------------------------------------------------
+	
+	%---
+	%
+	% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+	% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+	% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+	%
+	%---
+	% página de titulo
+	\maketitle
+	
+	% ---
+	% Título e resumo em língua estrangeira
+	% ---
+
+	% ----------------------------------------------------------
+	%  ELEMENTOS TEXTUAIS
+	% ----------------------------------------------------------
+	\textual
+	
+	% ----------------------------------------------------------
+	% Introdução
+	% ----------------------------------------------------------
+	
+	\section*{Prólogo}
+	\addcontentsline{toc}{section}{Prólogo}
+	
+	O propósito do presente trabalho é realizar o fichamento de um capítulo do livro ``Demodiversidade: imaginar novas possibilidades democráticas'', intitulado ``Um balanço da participação democrática no Brasil (1990–2014)'', de autoria de \citeonline{avritzer2018a} para a disciplina de Governança Pública, Democracia e Políticas no Território (ESHT008).
+	
+	Devido à indisponibilidade do Tidia\footnote{Endereço: \url{https://tidia4.ufabc.edu.br/portal}} quando do momento da elaboração deste fichamento, a versão do artigo utilizada foi a do livro na íntegra, em formato digital, que não possui número de páginas fixo.
+	
+	\section{Fichamento}
+	
+	O capítulo escrito por \citeonline{avritzer2018a} não impõe uma leitura desafiadora e traça um panorama da política participativa no contexto brasileiro entre as décadas de 1990 e 2014, com amplo destaque para o período petista, tanto devido a experiências significativas, como o Orçamento Participativo de Porto Alegre nos anos 1990, como também pela representatividade numérica quando da realização de conselhos, por exemplo. \citeonline{avritzer2018a} recupera ainda alguns antecedentes históricos nevrálgicos, como a Assembleia Nacional Constituinte (ANC) e os dispositivos que amparam a participação na Constituição Federal de 1988:
+	
+	\begin{citacao}
+		A constituição de 1988 estabeleceu uma nova relação entre representação e participação. Nos seus artigos sobre soberania (artigo 1.º) e participação direta (artigo 14.º) e nos capítulos sobre as políticas sociais participativas, ela constituiu o ponto de partida na direção da participação social no Brasil. O orçamento participativo foi a política que consolidou este passo inicial dado na direção da participação.
+	\end{citacao}
+	
+	O autor evidencia, como veremos posteriormente neste fichamento, a existência de conflitos entre os governos petistas e as políticas participativas, num processo de desidratação que termina (e, diante da leitura do autor, de certa maneira, culmina, arrisco dizer) nas manifestações de junho de 2013.
+	
+	Existem uma série de fatores que são destrinchados pelo autor, não de maneira extremamente compreensiva, mas com objetividade e profundidade suficientes para a proposta do texto, ao que destaco:
+	
+	\begin{itemize}
+		\item Redução do peso dos orçamentos participativos em gestões petistas ao longo dos anos;
+		\item Enfraquecimento dos orçamentos participativos enquanto diretriz partidária para gestões de partidos como o PT (Partido dos Trabalhadores) e PSDB (Partido Socialista Brasileiro);
+		\item Heterogeneidade na adoção do Orçamento Participativo em diferentes gestões locais do PT;
+		\item Construção de conselhos participativos que não abrangiam temas de infraestrutura e meio-ambiente, provocando um choque posterior com a participação em conselhos que eram, de alguma maneira, transversais aos temas;
+		\item Influência insatisfatória dos conselhos no desenho de políticas por parte do governo.
+	\end{itemize}
+
+	Especialmente sobre questões ambientais e infraestruturais, ficam nítidos conflitos pela terra e socioeconômicos, que envolvem oligarquias tradicionais, politicamente representadas por forças reacionárias do Legislativo --- o autor não é tão explícito e agressivo quanto fui, mas eis a minha compreensão, principalmente quando o autor argumenta que ``quando setores agrários passam a fazer parte da base do governo, ocorre uma cisão na política em relação à política indígena'' \cite{avritzer2018a}. Adicionalmente, as disputas na esfera judicial envolvendo o Ministério da Justiça e o governo estadual de Roraima, no contexto da demarcação da reserva Raposa Serra do Sol, citadas por \citeonline{avritzer2018a}, ilustram outro conflito delicado pela terra e o antagonismo entre os governos Lula e Dilma, quando a agenda de infraestrutura se impõe acima dos interesses de povos cujos modos de vida não necessariamente estão e precisam estar em linha com o capitalismo brasileiro --- mais uma vez, o autor não envereda por uma análise que exponha os atores como fiz aqui a partir da compreensão que tive.
+	
+	Para \citeonline{avritzer2018a}, no entanto, foi apenas com Belo Monte, em meados da segunda década do novo milênio (setembro de 2009), com a realização da primeira audiência no município de Brasil Novo, bem como outras três audiências que se sucederam a partir daí, que ocorreu o primeiro conflito ``o em torno de políticas participativas no Brasil, envolvendo, de um lado, os movimentos sociais e, de outro, o governo do Partido dos Trabalhadores''.
+	
+	A análise das manifestações de 2013 foi feita com brevidade, mas ainda assim, foi capaz de identificar dois campos temáticos e político-ideológicos, separados no tempo e nas redes sociais, que ditaram a agenda naquele momento. \citeonline{avritzer2018a} identificou que a tarifa do transporte público foi o principal alavancador inicial dos protestos, o que por sua vez, também representa outro elemento para compreender o descolamento entre a sociedade, alijada em termos de participação, e as políticas públicas de então.
+	
+	O ``veredito final'' do capítulo escrito por \citeonline{avritzer2018a}, cuja conclusão reproduzo abaixo, infelizmente, está um pouco datado em vista do avanço do conservadorismo e da extrema-direita no país:
+	
+	\begin{citacao}
+		O ano de 2015 deslocou ainda mais as políticas participativas do centro da política no Brasil. Tal fato se deu porque, de um lado, ocorreu um esgotamento do deslocamento da política brasileira para o centro com o aval do Partido dos Trabalhadores. De outro, porque, devido ao enfraquecimento das políticas participativas, não foi possível formar uma reação à reconstituição das forças conservadoras e à sua nova hegemonia no Congresso Nacional. Neste momento, a reorganização de uma política participativa no Brasil dependerá fortemente de uma reorganização da hegemonia de esquerda no país, processo no qual as políticas participativas terão de ocupar um lugar de maior centralidade, tal como elas o fizeram o começo da década de 1990. Somente assim a promessa vigente no texto constitucional de uma democracia que articule a participação e a representação poderá se realizar.
+	\end{citacao}
+
+	Ainda assim, é possível extrair a importância de uma reorganização a ser executada dentro do espectro da esquerda brasileira, que busque recuperar destacadamente as políticas participativas. Acredito que a premissa continue válida até os dias atuais.
+
+	% ---
+	% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+	% ---
+	\bookmarksetup{startatroot}% 
+	% ---
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PÓS-TEXTUAIS
+	% ----------------------------------------------------------
+	\postextual
+	
+	% ----------------------------------------------------------
+	% Referências bibliográficas
+	% ----------------------------------------------------------
+	\bibliography{fontes}
+	
+	% ----------------------------------------------------------
+	% Glossário
+	% ----------------------------------------------------------
+	% Consultar manual da classe abntex2 para orientações sobre o
+	% uso do glossário.
+	\renewcommand{\glossaryname}{Glossário}
+	%\renewcommand{\glossarypreamble}{Esta é a descrição do glossário.\\ \\}
+	\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}
+		\glsseelist{#2}}
+	
+	% ---
+	% Traduções para o ambiente glossaries
+	% ---
+	\providetranslation{Glossary}{Glossário}
+	\providetranslation{Acronyms}{Siglas}
+	\providetranslation{Notation (glossaries)}{Notação}
+	\providetranslation{Description (glossaries)}{Descrição}
+	\providetranslation{Symbol (glossaries)}{Símbolo}
+	\providetranslation{Page List (glossaries)}{Lista de Páginas}
+	\providetranslation{Symbols (glossaries)}{Símbolos}
+	\providetranslation{Numbers (glossaries)}{Números} 
+	% ---
+	
+	% ---
+	% Imprime o glossário
+	% ---
+	%\cleardoublepage
+	%\phantomsection
+	%\addcontentsline{toc}{section}{\glossaryname}
+	%\glossarystyle{index}
+	% \glossarystyle{altlisthypergroup}
+	% \glossarystyle{tree}
+	%\printglossaries
+	
+	% ----------------------------------------------------------
+	% Apêndices
+	% ----------------------------------------------------------
+	
+	% ---
+	% Inicia os apêndices
+	% ---
+	%	\begin{apendicesenv}
+	%		
+	%		% ----------------------------------------------------------
+	%		\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+	%			ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+	%		% ----------------------------------------------------------
+	%		\lipsum[55-57]
+	%		
+	%	\end{apendicesenv}
+	% ---
+	
+	% ----------------------------------------------------------
+	% Anexos
+	% ----------------------------------------------------------
+	%	\cftinserthook{toc}{AAA}
+	% ---
+	% Inicia os anexos
+	% ---
+	%\anexos
+	%	\begin{anexosenv}
+	%		
+	%		% ---
+	%		\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+	%			parturient montes nascetur ridiculus mus}
+	%		% ---
+	%		
+	%		\lipsum[31]
+	%		
+	%	\end{anexosenv}
+	
+\end{document}

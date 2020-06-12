@@ -1,0 +1,341 @@
+%% abtex2-modelo-artigo.tex, v-1.9.6 laurocesar
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-artigo.tex and
+%% abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+%  abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+%  ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+%  periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+% -- opções da classe memoir --
+article,			% indica que é um artigo acadêmico
+11pt,				% tamanho da fonte
+oneside,			% para impressão apenas no recto. Oposto a twoside
+a4paper,			% tamanho do papel. 
+% -- opções da classe abntex2 --
+%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+brazil,				% o último idioma é o principal do documento
+sumario=tradicional
+]{abntex2}
+
+\setlength\afterchapskip{\lineskip}
+
+% ---
+%  PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage[dvipsnames]{xcolor}	% Controle das cores
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{glossaries}			% solução de glossário
+\usepackage{nameref}			% referenciar também pelo nome
+% ---
+
+% ---
+%  Pacotes de perfumaria
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+%  Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% ---
+
+% ---
+%  Configurações do pacote backref
+%  Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+%  Configurações do pacote glossaries
+\renewcommand*{\glsclearpage}{}
+% ---
+
+% ---
+%  Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Fichamento para a disciplina de de Governança Pública, Democracia e Políticas no Território}
+\autor{Caio César Carvalho Ortega}
+\local{São Paulo, SP}
+\data{27/04/2020}
+% ---
+
+% ---
+%  Configurações de aparência do PDF final e informações do PDF
+\makeatletter
+\hypersetup{
+	%pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+	pdfsubject={Arranjos Institucionais},
+	pdfcreator={LaTeX with abnTeX2},
+	pdfkeywords={metropolização, metrópole, governança, metropolitana}, 
+	colorlinks=true,		% false: boxed links; true: colored links
+	linkcolor=Plum,			% color of internal links
+	citecolor=Blue,			% color of links to bibliography
+	filecolor=Red,			% color of file links
+	urlcolor=Red,
+	bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+%  compila o glossário
+% ---
+%\makeglossaries
+
+% \newglossaryentry{ex}{name={sample},description={an example}}
+
+% ---
+
+% ---
+%  compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+%  Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+%  Espaçamentos entre linhas e parágrafos 
+% --- 
+
+%  O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+%  Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+%  Espaçamento simples
+\SingleSpacing
+
+% ----
+%  Início do documento
+% ----
+\begin{document}
+	
+	% Seleciona o idioma do documento (conforme pacotes do babel)
+	%\selectlanguage{english}
+	\selectlanguage{brazil}
+	
+	% Retira espaço extra obsoleto entre as frases.
+	\frenchspacing 
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PRÉ-TEXTUAIS
+	% ----------------------------------------------------------
+	
+	%---
+	%
+	% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+	% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+	% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+	%
+	%---
+	% página de titulo
+	\maketitle
+	
+	% ---
+	% Título e resumo em língua estrangeira
+	% ---
+
+	% ----------------------------------------------------------
+	%  ELEMENTOS TEXTUAIS
+	% ----------------------------------------------------------
+	\textual
+	
+	% ----------------------------------------------------------
+	% Introdução
+	% ----------------------------------------------------------
+	
+	\section*{Prólogo}
+	\addcontentsline{toc}{section}{Prólogo}
+	
+	O propósito do presente trabalho é realizar o fichamento de um fragmento do livro ``O futuro da democracia: uma defesa das regras do jogo'' de \citeonline{bobbio1986a} disciplina de Governança Pública, Democracia e Políticas no Território (ESHT008).
+	
+	\section{Fichamento}
+	
+	\citeonline[p. 2]{bobbio1986a} propõe uma reflexão acerca dos regimes democráticos, adiantando que não é possível prever o futuro destes e da própria ideia de democracia.
+	
+	São aspectos importantes do argumento de \citeonline[p. 2]{bobbio1986a}, entender a democracia como uma contraposição ``a todas as formas de governo autocrático'', caracterizada ``por um conjunto de regras (primárias ou fundamentais) que estabelecem \textit{quem} está autorizado a tomar as decisões coletivas e com quais \textit{procedimentos}'' (grifos da obra original). As regras balizam a tomada de decisões, que ainda que individuais, afetam a vida em grupo, além de estabelecerem como a tomada de decisão se dá (e quais indivíduos podem ou não decidir).
+	
+	Na visão de \citeonline[p. 3]{bobbio1986a}, ao abrigo de uma imprecisão previamente admitida, ``um regime democrático caracteriza-se por atribuir este poder (que estando autorizado pela lei fundamental torna-se um direito) a um número muito elevado de membros do grupo''. Subentende-se, por tanto, ainda que vagamente, que o regime democrático envolve ampla participação na tomada de decisões, garantida e disciplinada legalmente. Como salientado ainda pelo autor posteriormente, é possível pensarmos numa ampliação da democracia a partir da ideia da ampliação do voto \cite[p. 3]{bobbio1986a}.
+	
+	\citeonline[p. 4]{bobbio1986a} ainda considera válida uma democracia quando esta possui não só os elementos acima, ``nem a existência de regras de procedimento como a da maioria (ou, no limite, na unanimidade)'', argumentando que existam (grifo meu) \textbf{alternativas reais}, oferecidas com \textbf{condição de escolha entre elas}, o que, na visão do autor, exige respeito a princípios liberais de direitos, ``seja qual for o fundamento filosófico'', a saber:
+	
+	\begin{itemize}
+		\item Liberdade;
+		\item Opinião;
+		\item Expressão;
+		\item Associação;
+		\item Entre outros.
+	\end{itemize}
+
+	Destaca-se o posicionamento do autor em relação a estados não liberais: \citeonline[p. 4]{bobbio1986a} considera pouco provável que estes sejam capais de assegurar um correto funcionamento da democracia e, similarmente, que um estado não democrático seja capaz de garantir liberdades fundamentais. Para \citeonline[p. 5]{bobbio1986a}, ``a prova histórica desta interdependência está no fato de que o estado liberal e estado democrático, quando caem, caem juntos''. Ademais, a noção de democracia do autor envolve uma reflexão análoga àquela que envolve discussões sobre o socialismo real, ou seja, está calcada numa contínua comparação entre \textbf{promessa} e \textbf{resultados concretos} (grifos meus) e, ainda que o autor não faça uma analogia com nomes como Karl Marx e Trótski, este cita explicitamente Locke, Rousseau, Tocqueville, Bentham e John Stuart Mill \cite[p. 5]{bobbio1986a}, ao que estes representariam os ideais, não a ``democracia real'' à qual podemos estar submetidos.
+	
+	Em linha com o autores clássicos do liberalismo, não surpreendentemente, \cite[p. 6]{bobbio1986a} recupera noções individualistas, que orientam contratualização; recupera o nascimento da economia política, ligada à ideia de \textit{homo economicus} e do bem coletivo a partir da ação individual (recuperando Adam Smith); e o utilitarismo (que dialoga com Bentham e John Stuart Mill). Tudo isso, contrariando Rousseau, contribuiu para produzir ``uma sociedade real, sotoposta aos governos democráticos'' que ``é pluralista'' \cite[p. 7]{bobbio1986a}.
+	
+	Considero feliz a admissão por parte do autor de que o poder oligárquico não foi derrotado, o que seria uma ``terceira promessa não cumprida'' por parte da democracia \cite[p. 10]{bobbio1986a}. Esta passagem, por si só, permite uma série de reflexões envolvendo o contexto brasileiro, o comportamento da burguesia nacional --- se é que temos uma ---, heranças colonialistas nefastas que permanecem arraigadas na sociedade brasileira, entre outras que não fazem parte do escopo deste fichamento e do próprio fragmento lido. As reflexões feitas por \cite[p. 10--12, 16]{bobbio1986a}, entretanto, seguem dialogando com a Europa, nomeadamente a Itália.
+	
+	Há ainda considerações interessantes sobre a cidadania, que aparece politicamente por meio de discursos e narrativas, sendo pano de fundo de discussões em torno de clientelismo e outras práticas que podem ser consideradas ruins à democracia \cite[p. 17]{bobbio1986a}, incluindo a apatia \cite[p. 16]{bobbio1986a}. Neste sentido, eu senti que o argumento não ficou tão claro. Talvez, por se tratar de uma obra de 1986, não existia ainda uma noção mais forte sobre perda de representatividade política, como parece existir nos atuais dias. A reflexão sobre a incompatibilidade entre técnica e democracia, no entanto, é bastante oportuna, uma vez que este dilema não fora resolvido até os dias atuais: com o aumento da complexidade socioeconômica, quão democraticamente permanece a tomada de decisão? É definitivamente uma das questões mais interessantes levantadas no capítulo \cite[p. 18]{bobbio1986a}.
+	
+	Outra reflexão oportuna diz respeito ao estado mínimo, tensionado pela própria ampliação da democracia: conforme segmentos mais vulneráveis (e que podem ser, justamente, camadas mais populares, com maior peso demográfico), pode existir a exigência de mais intervenção estatal para suprir carências \cite[p. 18]{bobbio1986a}. A reflexão é especialmente interessante, porque ela poderia ser extrapolada para a discussão da sustentabilidade de uma noção de democracia fortemente imbricada no liberalismo, até porque, o argumento do autor expõe uma tensão de classes que não visa o bem-estar, muito menos a aplicação da teoria de Smith em torno da ação individual como alavancadora do bem coletivo numa sociedade de mercado. Evidentemente, tratou-se de uma promessa não cumprida por parte da democracia, mas eu estenderia a reflexão para questionar se, com o liberalismo, a promessa é credível em primeiro lugar.
+	
+	A reflexão feita em sala de aula pelo Prof. Dr. Klaus Frey também aparece numa passagem do capítulo, já sintetizada pelo autor: ``a democracia tem a demanda fácil e a resposta difícil; a autocracia, ao contrário, está em condições de tornar a demanda mais difícil e dispõe de maior facilidade para dar respostas'' \cite[p. 20]{bobbio1986a}, ou seja, é a discussão permanente sobre a capacidade de resposta dos regimes democráticos, principalmente em momentos de crise e/ou agitação popular.
+	
+	Finalmente, é oportuno citar também o que \citeonline[p. 21]{bobbio1986a} entende como conteúdo mínimo do estado democrático:
+	
+	\begin{itemize}
+		\item Garantia de direitos de liberdade;
+		\item Múltiplos partidos concorrentes;
+		\item Eleições periódicas;
+		\item Sufrágio universal;
+		\item Decisões coletivas ou concordadas;
+		\item Princípio da maioria na tomada de decisão;
+		\item Livre debate entre partes envolvidas na decisão.
+	\end{itemize}
+	
+	% ---
+	% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+	% ---
+	\bookmarksetup{startatroot}% 
+	% ---
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PÓS-TEXTUAIS
+	% ----------------------------------------------------------
+	\postextual
+	
+	% ----------------------------------------------------------
+	% Referências bibliográficas
+	% ----------------------------------------------------------
+	\bibliography{fontes}
+	
+	% ----------------------------------------------------------
+	% Glossário
+	% ----------------------------------------------------------
+	% Consultar manual da classe abntex2 para orientações sobre o
+	% uso do glossário.
+	\renewcommand{\glossaryname}{Glossário}
+	%\renewcommand{\glossarypreamble}{Esta é a descrição do glossário.\\ \\}
+	\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}
+		\glsseelist{#2}}
+	
+	% ---
+	% Traduções para o ambiente glossaries
+	% ---
+	\providetranslation{Glossary}{Glossário}
+	\providetranslation{Acronyms}{Siglas}
+	\providetranslation{Notation (glossaries)}{Notação}
+	\providetranslation{Description (glossaries)}{Descrição}
+	\providetranslation{Symbol (glossaries)}{Símbolo}
+	\providetranslation{Page List (glossaries)}{Lista de Páginas}
+	\providetranslation{Symbols (glossaries)}{Símbolos}
+	\providetranslation{Numbers (glossaries)}{Números} 
+	% ---
+	
+	% ---
+	% Imprime o glossário
+	% ---
+	%\cleardoublepage
+	%\phantomsection
+	%\addcontentsline{toc}{section}{\glossaryname}
+	%\glossarystyle{index}
+	% \glossarystyle{altlisthypergroup}
+	% \glossarystyle{tree}
+	%\printglossaries
+	
+	% ----------------------------------------------------------
+	% Apêndices
+	% ----------------------------------------------------------
+	
+	% ---
+	% Inicia os apêndices
+	% ---
+	%	\begin{apendicesenv}
+	%		
+	%		% ----------------------------------------------------------
+	%		\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+	%			ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+	%		% ----------------------------------------------------------
+	%		\lipsum[55-57]
+	%		
+	%	\end{apendicesenv}
+	% ---
+	
+	% ----------------------------------------------------------
+	% Anexos
+	% ----------------------------------------------------------
+	%	\cftinserthook{toc}{AAA}
+	% ---
+	% Inicia os anexos
+	% ---
+	%\anexos
+	%	\begin{anexosenv}
+	%		
+	%		% ---
+	%		\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+	%			parturient montes nascetur ridiculus mus}
+	%		% ---
+	%		
+	%		\lipsum[31]
+	%		
+	%	\end{anexosenv}
+	
+\end{document}

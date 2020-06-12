@@ -1,0 +1,415 @@
+%% abtex2-modelo-artigo.tex, v-1.9.6 laurocesar
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-artigo.tex and
+%% abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+%  abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+%  ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+%  periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+% -- opções da classe memoir --
+article,			% indica que é um artigo acadêmico
+11pt,				% tamanho da fonte
+oneside,			% para impressão apenas no recto. Oposto a twoside
+a4paper,			% tamanho do papel. 
+% -- opções da classe abntex2 --
+%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+brazil,				% o último idioma é o principal do documento
+sumario=tradicional
+]{abntex2}
+
+\setlength\afterchapskip{\lineskip}
+
+% ---
+%  PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage[dvipsnames]{xcolor}	% Controle das cores
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{glossaries}			% solução de glossário
+\usepackage{nameref}			% referenciar também pelo nome
+\usepackage{longtable}			% tabelas longas
+% ---
+
+% ---
+%  Pacotes de perfumaria
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+%  Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% ---
+
+% ---
+%  Configurações do pacote backref
+%  Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+%  Configurações do pacote glossaries
+\renewcommand*{\glsclearpage}{}
+% ---
+
+% ---
+%  Configurações do pacote longtable
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+% ---
+
+% ---
+%  Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Fichamento para a disciplina de de Governança Pública, Democracia e Políticas no Território}
+\autor{Caio César Carvalho Ortega}
+\local{São Paulo, SP}
+\data{18/05/2020}
+% ---
+
+% ---
+%  Configurações de aparência do PDF final e informações do PDF
+\makeatletter
+\hypersetup{
+	%pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+	pdfsubject={},
+	pdfcreator={LaTeX with abnTeX2},
+	pdfkeywords={}, 
+	colorlinks=true,		% false: boxed links; true: colored links
+	linkcolor=Plum,			% color of internal links
+	citecolor=Blue,			% color of links to bibliography
+	filecolor=Red,			% color of file links
+	urlcolor=Red,
+	bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+%  compila o glossário
+% ---
+%\makeglossaries
+
+% \newglossaryentry{ex}{name={sample},description={an example}}
+
+% ---
+
+% ---
+%  compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+%  Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+%  Espaçamentos entre linhas e parágrafos 
+% --- 
+
+%  O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+%  Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+%  Espaçamento simples
+\SingleSpacing
+
+% ----
+%  Início do documento
+% ----
+\begin{document}
+	
+	% Seleciona o idioma do documento (conforme pacotes do babel)
+	%\selectlanguage{english}
+	\selectlanguage{brazil}
+	
+	% Retira espaço extra obsoleto entre as frases.
+	\frenchspacing 
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PRÉ-TEXTUAIS
+	% ----------------------------------------------------------
+	
+	%---
+	%
+	% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+	% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+	% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+	%
+	%---
+	% página de titulo
+	\maketitle
+	
+	% ---
+	% Título e resumo em língua estrangeira
+	% ---
+
+	% ----------------------------------------------------------
+	%  ELEMENTOS TEXTUAIS
+	% ----------------------------------------------------------
+	\textual
+	
+	% ----------------------------------------------------------
+	% Introdução
+	% ----------------------------------------------------------
+	
+	\section*{Prólogo}
+	\addcontentsline{toc}{section}{Prólogo}
+	
+	O propósito do presente trabalho é realizar o fichamento de um artigo presente no livro ``O tempo das redes'', intitulado ``Organizando babel: redes de políticas públicas: esclarecendo diferentes conceitos'', de autoria de \citeonline{borzel2008a} para a disciplina de Governança Pública, Democracia e Políticas no Território (ESHT008).
+	
+	\section{Fichamento}
+	
+	O primeiro aspecto notável do artigo de \citeonline{borzel2008a}, diz respeito à diferença entre a concepção anglo-saxônica de redes de políticas públicas e a concepção alemã, esta última adotada pela autora:
+	
+	\begin{citacao}Enquanto pesquisadores ingleses e americanos geralmente concebem as redes políticas como modelos de relações entre estado/sociedade em uma determinada área, os trabalhos germânicos tendem a tratá-las como uma forma alternativa de governança em relação à hierarquia e ao mercado. \cite[p. 218]{borzel2008a}
+	\end{citacao}
+
+	É a partir da concepção alemã que, como veremos, \citeonline[p. 221]{borzel2008a} vai se debruçar sobre duas escolas: a ``escola de intermediação de interesses'' e a ''escola da governança'', que estão em contraste.
+
+	A diferença conceitual pontuada, porém, não impede que as abordagens tenham um desafio em comum, que se desdobra em dois aspectos segundo \citeonline[p. 218]{borzel2008a}:
+	
+	\begin{enumerate}
+		\item Necessidade de demonstração sistemática da existência das redes e de sua relevância para o processo de construção de políticas;
+		\item Necessidade de enfrentamento do que a autora chamou de \textbf{problema da ambiguidade}, que significa esclarecer como as redes podem interferir na eficiência e legitimidade dos processos de construção política (\textit{i.e.} se as redes interferem positivamente e/ou negativamente).
+	\end{enumerate}
+
+	A partir de fontes secundárias, \cite[p. 218--219]{borzel2008a}, sem deixar ainda de salientar a interdisciplinaridade intrínseca, conceitua o termo rede, quando pensado como \textbf{rede de políticas públicas}, como:
+	
+	\begin{citacao}
+		(\dots) um conjunto de relacionamentos relativamente estáveis, de natureza não hierárquica e interdependentes, conectando uma variedade de atores que compartilham interesses relativos à política	e que trocam recursos com o objetivo de atingir esses interesses, reconhecendo que a cooperação é a melhor maneira de atingir objetivos em comum. \cite[p. 220]{borzel2008a}
+	\end{citacao}
+
+	Pareceu-me fundamental ainda incorporar aqui outra distinção, que cunho metodológico. Conforme \citeonline[p. 222]{borzel2008a}, redes políticas podem ser compreendidas ``como uma tipologia de intermediação de interesses'' ou ``redes políticas como uma forma específica de governança''. As metodologias podem ou não ser adotadas de maneira complementar --- e sua distinção também é fluída \cite[p. 223]{borzel2008a} ---, uma vez que existem ainda duas outras abordagens distintas:
+	
+	\begin{center}
+		\begin{longtable}{|l|p{10cm}|}
+			\caption{Análise quantitativa \textit{versus} análise qualitativa}
+			\label{tab:abordagens}\\
+			\hline
+			\textbf{Tipo} &
+			\textbf{Descrição} \\ \hline
+			\endfirsthead
+			%
+			\endhead
+			%
+			Quantitativa &
+			Enxerga a análise de redes como método de análise da estrutura social, observando a interação entre atores em termos de coesão, equivalência estrutural. Adota métodos quantitativa como classificação hierárquica ascendente, tabelas de densidade, \textit{block models}, entre outros \\ \hline
+			Qualitativa &
+			Orientada a processos. Observa não a estrutura de interação, mas o levantamento destas e seu conteúdo. Considera que as duas abordagens metodológicas são complementares. \\ \hline
+		\end{longtable}
+	\legend{Fonte: adaptado de \citeonline[p. 222]{borzel2008a}}
+	\end{center}
+
+	A ``escola de intermediação de interesses'', segundo \citeonline[p. 223]{borzel2008a}, é a mais proeminente e ``interpreta as redes políticas como um termo genérico para caracterizar diferentes formas de relacionamento entre grupos de interesse e o estado'', enquanto a ``escola da governança'' dá às redes políticas o tratamento de formas específicas de governança conforme a autora, que argumenta que estas atuam mais restritivamente e ``como um mecanismo de mobilização de recursos políticos em situações nas quais esses recursos estão amplamente dispersos entre os atores públicos e privados''.
+	
+	No caso da tipologia de intermediação de interesses, esta subdivide-se em duas correntes: pluralismo e neocorporativismo, porém, estes têm sido criticados por ``falta de relevância empírica e, além disso, consistência lógica'' \apud[p. 224]{marsh1992a}{borzel2008a} \apud[p. 224]{jordan1992a}{borzel2008a}. Os refinamentos posteriores dos modelos seguem problemáticos para \citeonline[p. 224]{borzel2008a}, que aponta confusões e mal-entendidos na discussão entre estado e grupos de interesse, pois ``rótulos similares descrevem diferentes fenômenos, ou então rótulos diferentes descrevem fenômenos semelhantes''. A solução de alguns autores consiste no abandono da dicotomia entre pluralismo e neocorporativismo e na compreensão da rede como  ``um rótulo genérico que abrange os diferentes tipos de relacionamento entre estado/grupos de interesse'' \cite[p. 225]{borzel2008a}.
+	
+	Neste sentido, considero importante entender o comportamento da literatura estudada pela autora:
+	
+	\begin{citacao}
+		As tipologias de redes encontradas na literatura compartilham um entendimento em comum a respeito das redes políticas como relacionamentos de dependência de poder entre o governo e os grupos de interesse, dentro dos quais há intercâmbio de recursos. As tipologias, entretanto, diferem entre si em relação a quais dimensões distinguem os diferentes tipos de redes. \cite[p. 225--226]{borzel2008a}
+	\end{citacao}
+	
+	A autora constrói uma visão geral, bastante sucinta, em torno da literatura existente, mas a ausência de exemplos ou de um estudo de caso orientado pela disciplina, acaba por torná-la pouco prática para ser mencionada aqui. O que \cite[p. 229--230]{borzel2008a} salienta é que a metodologia é amplamente adotada ``no estudo de construção de políticas setoriais em vários países'', justificando que as redes de políticas costumam ser consideradas como uma ``ferramenta analítica para examinar relações de troca institucionalizadas entre o estado e as organizações da sociedade civil, permitindo uma análise mais apurada ao considerar as diferenças setoriais e subsetoriais''. Supõe-se que as redes são reflexo de uma situação relativa de poder ou de interesses particulares em determinado campo, que influencia os resultados das políticas \cite[p. 230]{borzel2008a}.
+	
+	Subjetivamente, com base nas descrições, alguns se destacam, como modelos baseados em \textit{clusters} \cite[p. 227]{borzel2008a}. Como a distinção entre homogeneidade e heterogeneidade acaba sofrendo desprezo pelo tipo de rede comumente observada pela literatura existente, sendo que o principal efeito da heterogeneidade é a conexão de diferentes atores em uma rede política para mediação de interesses e troca de recursos, produzindo uma relação de interdependência \cite[p. 229]{borzel2008a}.
+	
+	Já no caso da segunda abordagem metodológica, cujas lentes são as da forma específica de governança ao olhar redes políticas, \citeonline[p. 231]{borzel2008a} explica que é possível observar duas aplicações conceituais na literatura.
+	
+	O primeiro é o conceito analítico ou modelo, que carateriza ``relacionamentos estruturais, interdependências e dinâmicas entre atores na política e na construção de políticas'' \apud[p. 231]{schneider1988a}{borzel2008a}; contribui para análises em situações nas quais a explicação não pode se dar pela ``pela centralização e concentração das ações políticas em direção a objetivos em comum''; observa a organizações simultaneamente separadas e interdependentes; observa a força dos atores; observa a intensidade das conexões. No caso segunda possibilidade,
+	
+	\begin{citacao}
+		O padrão de conexões e interações como um todo deveria ser considerado como uma unidade de análise. Em re-
+		sumo, estes autores trocam a unidade de análise, que era o ator
+		individual para o conjunto de inter-relacionamentos constitu-
+		tivos das redes interorganizacionais. \cite[p. 233]{borzel2008a}
+	\end{citacao}
+
+	Na linha de outras discussões realizadas em sala, é especialmente oportuna a noção de que ``em geral, as redes políticas refletem um relacionamento modificado entre estado e sociedade'' \cite[p. 235]{borzel2008a}. Outro aspecto interessante e oportuno diz respeito ao sistema de barganha, no contexto em que a ``coordenação horizontal entre organizações é baseada em barganha entre os representantes das	organizações'' \cite[p. 237]{borzel2008a}, sendo que os representantes não gozam de completa autonomia, sendo que ``as redes auxiliam a superar o dilema estrutural dos sistemas de barganha porque elas provêem
+	possibilidades redundantes de interação e comunicação'' \cite[p. 240]{borzel2008a}. A ideia de redução dos custos transacionais também faz muito sentido, sendo o exemplo de tomada de decisão quase que autoexplicativo \cite[p. 240]{borzel2008a}.
+	
+	Considero ainda que as figuras a seguir são úteis para compreender o artigo:
+	
+	\begin{figure}[h]
+		\centering
+		\caption{A evolução de redes de políticas como uma nova forma de governança}
+		\label{fig:borzel2008ap24101}
+		\includegraphics[width=0.7\linewidth]{img/borzel2008a_p241_01}
+		\legend{Fonte: \citeonline[p. 241]{borzel2008a}}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\caption{Conceitos de redes de políticas}
+		\label{fig:borzel2008ap24601}
+		\includegraphics[width=0.7\linewidth]{img/borzel2008a_p246_01}
+		\legend{Fonte: \citeonline[p. 246]{borzel2008a}}
+	\end{figure}
+
+	\citeonline[p. 247]{borzel2008a} inicia a conclusão de seu artigo reiterando o que havia dito nas primeiras páginas: ``uma das críticas principais é que as redes de políticas não oferecem poder explanatório'', só que deixando claro que o horizonte pode ser mais otimista ao considerar trabalhos europeus que se debruçaram sobre um formato de ``formulação e implementação de políticas coordenam seus interesses por meio de negociação não hierárquica'' entre atores \cite[p. 248]{borzel2008a}.
+	
+	Também na conclusão são interessantes as noções que orbitam em torno da possibilidade do surgimento de estruturas políticas que são capazes de governar sem a existência de um governo, bem como que recuperam a dificuldade de conciliar desregulamentação ligada ao mercado e coordenação hierárquica em vista do aumento das crises de legitimidade, neste sentido, as redes poderiam ser uma solução, em decorrência dos seguintes fatores \cite[p. 249]{borzel2008a}:
+	
+	\begin{itemize}
+		\item Capacidade de agrupamento de recursos dispersos para as políticas;
+		\item Inclusão de uma ampla variedade de atores diferentes;
+		\item Fornecimento de estrutura de gestão que ``facilita a realização de ganhos coletivos entre agentes motivados por interesses próprios, que buscam	maximizar seus ganhos individuais''.
+	\end{itemize}
+
+	As redes, por outro lado, poderiam não ser uma solução em decorrência dos seguintes possibilidades:
+	
+	\begin{itemize}
+		\item Inibição de mudanças nas políticas \apud[p. 250]{lehmbruch1991a}{borzel2008a};
+		\item Exclusão de atores do processo de formulação de políticas \apud[p. 250]{benz1995a}{borzel2008a};
+		\item De serem democraticamente \textit{accountable} \apud[p. 250]{rhodes1997a}{borzel2008a}.
+	\end{itemize}
+
+	Finalmente, a visão da autora é de que ``se as duas escolas juntassem forças para enfrentar esses dois grandes desafios, seria possível produzir uma nova e interessante agenda para o estudo de redes de políticas'', uma vez que considera ser possível enfrentar a ambiguidade (ou seja, a incerteza entre as redes de políticas serem ou não uma solução e boas contribuidoras).
+
+	% ---
+	% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+	% ---
+	\bookmarksetup{startatroot}% 
+	% ---
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PÓS-TEXTUAIS
+	% ----------------------------------------------------------
+	\postextual
+	
+	% ----------------------------------------------------------
+	% Referências bibliográficas
+	% ----------------------------------------------------------
+	\bibliography{fontes}
+	
+	% ----------------------------------------------------------
+	% Glossário
+	% ----------------------------------------------------------
+	% Consultar manual da classe abntex2 para orientações sobre o
+	% uso do glossário.
+	\renewcommand{\glossaryname}{Glossário}
+	%\renewcommand{\glossarypreamble}{Esta é a descrição do glossário.\\ \\}
+	\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}
+		\glsseelist{#2}}
+	
+	% ---
+	% Traduções para o ambiente glossaries
+	% ---
+	\providetranslation{Glossary}{Glossário}
+	\providetranslation{Acronyms}{Siglas}
+	\providetranslation{Notation (glossaries)}{Notação}
+	\providetranslation{Description (glossaries)}{Descrição}
+	\providetranslation{Symbol (glossaries)}{Símbolo}
+	\providetranslation{Page List (glossaries)}{Lista de Páginas}
+	\providetranslation{Symbols (glossaries)}{Símbolos}
+	\providetranslation{Numbers (glossaries)}{Números} 
+	% ---
+	
+	% ---
+	% Imprime o glossário
+	% ---
+	%\cleardoublepage
+	%\phantomsection
+	%\addcontentsline{toc}{section}{\glossaryname}
+	%\glossarystyle{index}
+	% \glossarystyle{altlisthypergroup}
+	% \glossarystyle{tree}
+	%\printglossaries
+	
+	% ----------------------------------------------------------
+	% Apêndices
+	% ----------------------------------------------------------
+	
+	% ---
+	% Inicia os apêndices
+	% ---
+	%	\begin{apendicesenv}
+	%		
+	%		% ----------------------------------------------------------
+	%		\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+	%			ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+	%		% ----------------------------------------------------------
+	%		\lipsum[55-57]
+	%		
+	%	\end{apendicesenv}
+	% ---
+	
+	% ----------------------------------------------------------
+	% Anexos
+	% ----------------------------------------------------------
+	%	\cftinserthook{toc}{AAA}
+	% ---
+	% Inicia os anexos
+	% ---
+	%\anexos
+	%	\begin{anexosenv}
+	%		
+	%		% ---
+	%		\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+	%			parturient montes nascetur ridiculus mus}
+	%		% ---
+	%		
+	%		\lipsum[31]
+	%		
+	%	\end{anexosenv}
+	
+\end{document}

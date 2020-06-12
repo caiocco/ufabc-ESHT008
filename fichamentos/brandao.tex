@@ -1,0 +1,364 @@
+%% abtex2-modelo-artigo.tex, v-1.9.6 laurocesar
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-artigo.tex and
+%% abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+%  abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+%  ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+%  periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+% -- opções da classe memoir --
+article,			% indica que é um artigo acadêmico
+11pt,				% tamanho da fonte
+oneside,			% para impressão apenas no recto. Oposto a twoside
+a4paper,			% tamanho do papel. 
+% -- opções da classe abntex2 --
+%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+brazil,				% o último idioma é o principal do documento
+sumario=tradicional
+]{abntex2}
+
+\setlength\afterchapskip{\lineskip}
+
+% ---
+%  PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage[dvipsnames]{xcolor}	% Controle das cores
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{glossaries}			% solução de glossário
+\usepackage{nameref}			% referenciar também pelo nome
+% ---
+
+% ---
+%  Pacotes de perfumaria
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+%  Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% ---
+
+% ---
+%  Configurações do pacote backref
+%  Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+%  Configurações do pacote glossaries
+\renewcommand*{\glsclearpage}{}
+% ---
+
+% ---
+%  Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Fichamento para a disciplina de de Governança Pública, Democracia e Políticas no Território}
+\autor{Caio César Carvalho Ortega}
+\local{São Paulo, SP}
+\data{20/05/2020}
+% ---
+
+% ---
+%  Configurações de aparência do PDF final e informações do PDF
+\makeatletter
+\hypersetup{
+	%pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+	pdfsubject={},
+	pdfcreator={LaTeX with abnTeX2},
+	pdfkeywords={}, 
+	colorlinks=true,		% false: boxed links; true: colored links
+	linkcolor=Plum,			% color of internal links
+	citecolor=Blue,			% color of links to bibliography
+	filecolor=Red,			% color of file links
+	urlcolor=Red,
+	bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+%  compila o glossário
+% ---
+%\makeglossaries
+
+% \newglossaryentry{ex}{name={sample},description={an example}}
+
+% ---
+
+% ---
+%  compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+%  Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+%  Espaçamentos entre linhas e parágrafos 
+% --- 
+
+%  O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+%  Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+%  Espaçamento simples
+\SingleSpacing
+
+% ----
+%  Início do documento
+% ----
+\begin{document}
+	
+	% Seleciona o idioma do documento (conforme pacotes do babel)
+	%\selectlanguage{english}
+	\selectlanguage{brazil}
+	
+	% Retira espaço extra obsoleto entre as frases.
+	\frenchspacing 
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PRÉ-TEXTUAIS
+	% ----------------------------------------------------------
+	
+	%---
+	%
+	% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+	% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+	% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+	%
+	%---
+	% página de titulo
+	\maketitle
+	
+	% ---
+	% Título e resumo em língua estrangeira
+	% ---
+
+	% ----------------------------------------------------------
+	%  ELEMENTOS TEXTUAIS
+	% ----------------------------------------------------------
+	\textual
+	
+	% ----------------------------------------------------------
+	% Introdução
+	% ----------------------------------------------------------
+	
+	\section*{Prólogo}
+	\addcontentsline{toc}{section}{Prólogo}
+	
+	O propósito do presente trabalho é realizar o fichamento de um capítulo do livro ``Governança territorial e desenvolvimento: 	descentralização político-administrativa, estruturas subnacionais de gestão do desenvolvimento e capacidades estatais'', intitulado ``Descentralização enquanto modo de ordenamento espacial do poder e de reescalonamento territorial do Estado: trajetória e desafios para o Brasil'', de autoria de \citeonline{brandao2011a} para a disciplina de Governança Pública, Democracia e Políticas no Território (ESHT008).
+	
+	\section{Fichamento}
+		
+	O capítulo uma discussão em torno do reescalonamento estatal e da estatalidade, que objetiva ``contribuir para a formulação de estratégias territorializadas de desenvolvimento mais consistentes e efetivas'' \cite[p. 116]{brandao2011a}, sendo que o termo \textbf{estatalidade} pode ser compreendido como  conjunto de relações sociais distintivas incorporadas ou expressas através das instituições do Estado \apud[p. 115]{brenner2004a}{brandao2011a}.
+	
+	Há particularidades envolvendo as especificidades do pacto federativo, que demandam olhar para o ``federalismo, enquanto pacto territorial de poder'', para tanto, é preciso ``realizar as mediações teóricas e históricas necessárias entre: as escalas espaciais, os níveis de governo e os âmbitos de poder'' \cite[p. 116]{brandao2011a}.
+	
+	Entre os aspectos peculiares do federalismo brasileiro, \citeonline[p. 116--117]{brandao2011a} elenca a estruturação do poder central ``antes dos poderes das instâncias subnacionais'', além de um histórico que oscila ``entre centralismo autoritário e mandonismo oligárquico regional e localista'', cujo saldo favoreceu a concentração do poder central ante ``interesses dispersivos e pouco conciliáveis de um país continental e com marcantes heterogeneidades estruturais (regionais, produtivas, sociais, culturais)''.
+	
+	\citeonline[p. 117]{brandao2011a} aponta uma série de desafios envolvendo o pacto federalista brasileiro, que envolvem dimensões socioespaciais, como o território vasto e continental, embora desigual e imaturo (o autor fala em ``nação em construção''), o que exige muitos recursos públicos e acaba se traduzindo numa conjuntura sempre precária. A exigência de muitos recursos públicos, segundo \apudonline[p. 117]{affonso1995a}{brandao2011a}, esta transferência entre regiões é fundamental para sustentar a estrutura de poder não só entre as esferas de governo, mas também da própria unidade federativa, sendo que as relações complexas envolvem:
+	
+	\begin{itemize}
+		\item Sistema de representação política dos estados;
+		\item Distribuição de encargos entre União, estados e municípios;
+		\item Ordenamento jurídico-federativo da Nação.
+	\end{itemize}
+
+	Para \citeonline[p. 117]{brandao2011a}, existe uma confusão na estruturação do pacto devido à ocorrência de múltiplos processos distintos e simultaneamente imbricados:
+	
+	\begin{citacao}
+		O enfrentamento dos desafios para a constituição de novo modo de relacionamento entre os poderes central, regional e local e o próprio debate destas questões no Brasil foi tornado confuso e pouco conclusivo, pois três processos distintos, mas que se imbricaram no curso do processo histórico, se desataram ao longo da década de 1980: os processos de liberalização econômica dos países centrais; o processo de redemocratização brasileiro e a profunda crise fiscal, financeira e de legitimidade do Estado.
+	\end{citacao}
+
+	A partir dessa introdução, \citeonline[p. 117]{brandao2011a} argumenta que a discussão envolvendo o pacto alimenta uma utopia, que, se bem sucedida, significaria implantar um processo de descentralização administrativa, fiscal e política, o que envolve um discurso cujas bases balanceiam eficiência e eficácia ``na operação do aparato estatal, provisão, com equidade, de bens e serviços públicos e promoção de mecanismos redutores das assimetrias regionais''. Em relação à ideia de utopia de \citeonline{brandao2011a}, tomo a liberdade de citar \cite[p. 104]{guia2015a}, por considerar que há relevância em relação à discussão:
+	
+	\begin{citacao}
+		Como se viu, devido à tradição fortemente centralista do período militar, criou-se, nos primeiros anos da Nova República, um mito a respeito do processo de descentralização em políticas públicas, que passou a ser visto quase como sinônimo de gestão democrática, sendo considerado a priori algo desejável e capaz de proporcionar maior eficiência na formulação e implementação de políticas públicas. (\dots) Embora a descentralização em certas ocasiões possa ser mecanismo importante para maior eficácia, transparência e acesso a serviços e equipamentos urbanos, especialmente para a população carente, é terapia que não pode ser generalizada, estando longe de ser uma panacéia aplicável em qualquer caso.
+	\end{citacao}
+	
+	Outra questão importante, colocada a partir de uma visão ``furtadiana'', diz respeito aos entraves ligados ao pacto federativo, ``conciliação dos interesses intra e inter-regionais de natureza fragmentária'', cooperação e solidariedade em níveis mínimos \cite[p. 118]{brandao2011a}. A visão de Celso Furtado, que permeia o texto, diz respeito à estruturação de um projeto funcional de desenvolvimento, que não seja um simples receituário genérico e concebido para realidades distintas da brasileira, mas que valorize as especifidades e permita a redução do exército de reserva de mão de obra, inserindo massivamente a classe trabalhadora numa economia desenvolvida e competitiva, em outras palavras, o pacto atual, devido aos interesses difusos e de difícil conciliação, é um entrave para um projeto coeso de desenvolvimento nacional.
+	
+	\citeonline[p. 118]{brandao2011a} aponta que ``a longa construção do pacto federativo brasileiro jamais valorizou a riqueza de nossa diversidade e sempre foi marcada pelo conservadorismo''. O pacto não funciona adequadamente para bem tributar e bem distribuir recursos, ligada a três tarefas de \cite[p. 119]{brandao2011a}:
+	
+	\begin{enumerate}
+		\item Distribuição de competências tributárias;
+		\item Transferências intergovernamentais; e
+		\item Atribuição de encargos entre as esferas de governo.
+	\end{enumerate}
+
+	Para países continentais como o Brasil, \citeonline[o. 119]{brandao2011a} sugere que ``o modelo de competências concorrentes parece adequado e há a necessidade de ponderáveis transferências compensatórias''. Infelizmente falta capacidade técnica, evidenciada no pós-1988, que dificulta descentralizar competências, distribuir receitas e desenvolver estratégias de médio e longo prazos \cite[p. 120]{brandao2011a}.
+	
+	Particularmente, como interessado pela temática da metropolização e de fenômenos ainda mais complexos que surgem espacialmente no bojo da complexificação econômica e urbana, é mister não deixar de apontar que o atual pacto federativo comprometeu a autonomia dos estados, o que por si só esbarra na questão do financiamento, como muito bem apontou \apudonline[p. 120]{prado2003a}{brandao2011a} se valendo de fonte secundária. Também sobre financiamento, \citeonline{guia2015a} pode ser oportuno de ser citado:
+	
+	\begin{citacao}
+		Em qualquer política pública, duas questões	de grande centralidade para a análise de seu potencial de confiabilidade e de seu impacto na sociedade são, respectivamente, a explicitação das fontes de financiamento disponíveis e o conhecimento da sua clientela-alvo. Em termos de aporte financeiro, apenas em três dos 26 estados brasileiros as Constituições determinam rubricas e/ou mecanismos específicos de co-responsabilidade dos governos estadual e municipais voltados para garantir recursos destinados às
+		funções de interesse comum. \cite[p. 103]{guia2015a}
+	\end{citacao}
+
+	Em seguida, \citeonline[p. 122]{brandao2011a} propõe ``alguns elementos teóricos e metodológicos para a formulação de pactos territoriais' para contextos institucionais e territoriais como o do Brasil. São eles \cite[p. 122--131]{brandao2011a}:
+	
+	\begin{itemize}
+		\item Contratualização em escala (regional, metropolitana), que pode diminuir riscos e conferir estabilidade (em termos de acordos políticos, porém isto exige mecanismos de incentivo em âmbito federal);
+		\item Estabelecimento de acordos regionais e locais;
+		\item Criação de agências de desenvolvimento;
+		\item Busca por arranjos institucionais com governança alternativa e solidária, sem competências superpostas e baixa transparência em situações de conflito;
+		\item Fortalecimento de inovações associativas, como consórcios e comitês, que permitem ganhos de escala e estão voltados à solução de problemas concretos;
+		\item Busca por mecanismos de cooperação federativa que superem a lógica da competitividade em prol da cooperação;
+		\item Equilíbrio entre arranjos contratualizados e informais, uma vez que a informalidade pode sedimentar o caminho para a formalização posterior, numa atmosfera de menor tensão entre os entes;
+		\item Desenvolvimento de técnicas capazes de envolver um ``processo delicado de aprendizado conflituoso'', exigindo ações ágeis, potentes, sistemáticas e disparadas em várias direções escalares;
+		\item Reconstrução da participação, tanto em espaços públicos, quanto em canais de comunicação;
+		\item Estímulo à diversidade de atores para romper com forças desarticuladoras;
+		\item Capacitação da burocracia, em termos materiais e humanos;
+		\item Definição de uma escala supralocal, para superar a pressão imposta pela escala do território em arranjos como consórcios;
+		\item Melhorar o suporte infraestrutural e reestruturar o Padrão de Oferta de Bens e Serviços.
+	\end{itemize}
+
+	% ---
+	% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+	% ---
+	\bookmarksetup{startatroot}% 
+	% ---
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PÓS-TEXTUAIS
+	% ----------------------------------------------------------
+	\postextual
+	
+	% ----------------------------------------------------------
+	% Referências bibliográficas
+	% ----------------------------------------------------------
+	\bibliography{fontes}
+	
+	% ----------------------------------------------------------
+	% Glossário
+	% ----------------------------------------------------------
+	% Consultar manual da classe abntex2 para orientações sobre o
+	% uso do glossário.
+	\renewcommand{\glossaryname}{Glossário}
+	%\renewcommand{\glossarypreamble}{Esta é a descrição do glossário.\\ \\}
+	\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}
+		\glsseelist{#2}}
+	
+	% ---
+	% Traduções para o ambiente glossaries
+	% ---
+	\providetranslation{Glossary}{Glossário}
+	\providetranslation{Acronyms}{Siglas}
+	\providetranslation{Notation (glossaries)}{Notação}
+	\providetranslation{Description (glossaries)}{Descrição}
+	\providetranslation{Symbol (glossaries)}{Símbolo}
+	\providetranslation{Page List (glossaries)}{Lista de Páginas}
+	\providetranslation{Symbols (glossaries)}{Símbolos}
+	\providetranslation{Numbers (glossaries)}{Números} 
+	% ---
+	
+	% ---
+	% Imprime o glossário
+	% ---
+	%\cleardoublepage
+	%\phantomsection
+	%\addcontentsline{toc}{section}{\glossaryname}
+	%\glossarystyle{index}
+	% \glossarystyle{altlisthypergroup}
+	% \glossarystyle{tree}
+	%\printglossaries
+	
+	% ----------------------------------------------------------
+	% Apêndices
+	% ----------------------------------------------------------
+	
+	% ---
+	% Inicia os apêndices
+	% ---
+	%	\begin{apendicesenv}
+	%		
+	%		% ----------------------------------------------------------
+	%		\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+	%			ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+	%		% ----------------------------------------------------------
+	%		\lipsum[55-57]
+	%		
+	%	\end{apendicesenv}
+	% ---
+	
+	% ----------------------------------------------------------
+	% Anexos
+	% ----------------------------------------------------------
+	%	\cftinserthook{toc}{AAA}
+	% ---
+	% Inicia os anexos
+	% ---
+	%\anexos
+	%	\begin{anexosenv}
+	%		
+	%		% ---
+	%		\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+	%			parturient montes nascetur ridiculus mus}
+	%		% ---
+	%		
+	%		\lipsum[31]
+	%		
+	%	\end{anexosenv}
+	
+\end{document}
