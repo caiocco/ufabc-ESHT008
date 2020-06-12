@@ -1,0 +1,461 @@
+%% abtex2-modelo-artigo.tex, v-1.9.6 laurocesar
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-artigo.tex and
+%% abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+%  abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+%  ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+%  periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+% -- opções da classe memoir --
+article,			% indica que é um artigo acadêmico
+11pt,				% tamanho da fonte
+oneside,			% para impressão apenas no recto. Oposto a twoside
+a4paper,			% tamanho do papel. 
+% -- opções da classe abntex2 --
+%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+brazil,				% o último idioma é o principal do documento
+sumario=tradicional
+]{abntex2}
+
+\setlength\afterchapskip{\lineskip}
+
+% ---
+%  PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage[dvipsnames]{xcolor}	% Controle das cores
+\usepackage{times}				% Usa a fonte Times
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{glossaries}			% solução de glossário
+\usepackage{nameref}			% referenciar também pelo nome
+\usepackage{multirow}			% permite mesclagem de células
+\usepackage{longtable}			% tabelas que quebram entre páginas
+% ---
+
+% ---
+%  Pacotes de perfumaria
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+%  Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% ---
+
+% ---
+%  Configurações do pacote backref
+%  Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+%  Configurações do pacote longtable
+\setlength{\LTpost}{0pt}
+% ---
+
+% ---
+%  Configurando a fonte dos subtítulos
+\renewcommand{\ABNTEXchapterfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
+% ---
+
+% ---
+%  Configurações do pacote glossaries
+\renewcommand*{\glsclearpage}{}
+% ---
+
+% ---
+%  Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Desafios na governança pública: metropolização como agente de conflito no Brasil redemocratizado}
+\autor{Caio César Carvalho Ortega}
+\local{}
+\data{11/06/2020}
+% ---
+
+% ---
+%  Configurações de aparência do PDF final e informações do PDF
+\makeatletter
+\hypersetup{
+	%pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+	pdfsubject={gestão pública},
+	pdfcreator={LaTeX com abnTeX2, openSUSE Leap 15.1},
+	pdfkeywords={consórcios públicos, descentralização, governança metropolitana, metropolização, municipalismo, regiões metropolitanas}, 
+	colorlinks=true,			% false: boxed links; true: colored links
+	linkcolor=black,			% color of internal links
+	citecolor=black,			% color of links to bibliography
+	filecolor=black,			% color of file links
+	urlcolor=black,				% cor de links para sítios na Internet
+	bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+%  compila o glossário
+% ---
+%\makeglossaries
+
+% \newglossaryentry{ex}{name={sample},description={an example}}
+
+% ---
+
+% ---
+%  compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+%  Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+%  Espaçamentos entre linhas e parágrafos 
+% --- 
+
+%  O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+%  Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+%  Espaçamento simples
+\SingleSpacing
+
+% ----
+%  Início do documento
+% ----
+\begin{document}
+	
+	% Seleciona o idioma do documento (conforme pacotes do babel)
+	%\selectlanguage{english}
+	\selectlanguage{brazil}
+	
+	% Retira espaço extra obsoleto entre as frases.
+	\frenchspacing 
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PRÉ-TEXTUAIS
+	% ----------------------------------------------------------
+	
+	%---
+	%
+	% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+	% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+	% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+	%
+	%---
+	% página de titulo
+	\maketitle
+	% resumo em português
+		
+	\begin{resumoumacoluna}
+		% Instruções do próprio modelo canônico:
+		% Conforme a ABNT NBR 6022:2003, o resumo é elemento obrigatório, constituído de uma sequência de frases concisas e objetivas e não de uma simples enumeração de tópicos, não ultrapassando 250 palavras, seguido, logo abaixo, das palavras representativas do conteúdo do trabalho, isto é, palavras-chave e/ou descritores, conforme a NBR 6028. (...) As palavras-chave devem figurar logo abaixo do resumo, antecedidas da expressão Palavras-chave:, separadas entre si por	ponto e finalizadas também por ponto.
+		
+		Este ensaio propõe revisitar alguns aspectos ligados ao pacto federativo brasileiro e discutir a problemática da metropolização na governança pública, aqui entendida também como governança pública metropolitana ou apenas governança metropolitana. Considera-se a existência de um paradigma forjado a partir de ideais de autonomia local imbricados a um modelo de financiamento e regulamentação centralizados, com uma complexa teia de disputas política e interfederativa, como um elemento desafiador e negativo para o desenvolvimento de arranjos territoriais em escala metropolitana.
+		
+		\vspace{\onelineskip}
+		
+		\noindent
+		\textbf{Palavras-chave}: consórcios públicos, descentralização, governança metropolitana, metropolização, municipalismo, regiões metropolitanas.
+	\end{resumoumacoluna}
+
+	% ---
+	% Título e resumo em língua estrangeira
+	% ---
+
+	% ----------------------------------------------------------
+	%  ELEMENTOS TEXTUAIS
+	% ----------------------------------------------------------
+	\textual
+	
+	% ----------------------------------------------------------
+	% Introdução
+	% ----------------------------------------------------------
+
+	\section{Introdução}
+	% Estrutura segundo https://repositorio.ufsc.br/bitstream/handle/123456789/116800/DICAS_SOBRE_COMO_ESCREVER_UM_ENSAIO.pdf?sequence=1
+	%
+	% 1. INTRODUÇÃO
+	% 	Definição do tema
+	%		- Por que escolheu este tema
+	%		- O que vai argumentar
+	%		- Descrição da estrutura do ensaio 
+	% ---
+	
+	O municipalismo é uma característica intrínseca da Constituição Federal de 1988 e ensejou uma ruptura drástica nas práticas centralistas da ditadura militar. O reconhecimento dos municípios como figuras regionais dotadas de autonomia, no entanto, não foi uma conquista livre de conflitos e contradições, afetando também de forma drástica, o planejamento de âmbito metropolitano. Apesar da abundância de discussões, ainda não existe uma fórmula clara para conciliar os princípios democráticos que regem a Carta Magna brasileira, as disputas numa arena territorial profundamente desigual e a complexificação das economias e tecidos urbanos e sociais, que não está sujeita às ``paredes ocultas''\footnote{Para um emprego similar do termo, ver artigo de opinião intitulado publicado pela Agência Mural de Jornalismo das Periferias em 02/06/2020, disponível em \url{https://www.agenciamural.org.br/opiniao-nao-ha-paredes-entre-a-capital-e-as-demais-cidades-da-grande-sp/}.} dos limites políticos-administrativos e se contorce em meio ao labirinto jurídico-institucional.
+	
+	O estabelecimento e reconhecimento de FPICs\footnote{Funções públicas de interesse comum.} por parte dos entes federados não se traduz, necessariamente, na existência de capacidade estatal para fazer frente aos desafios de competências que se sobrepõem ou que afetam múltiplos entes.
+	
+	Há uma necessidade latente de que a concertação dos arranjos de cooperação e governança seja territorializado e apresente um processo sofisticado e conciliador de participação, envolvendo atores públicos e privados.
+	
+	\section{Exacerbação do municipalismo e autonomismo municipal}
+	% Estrutura segundo https://repositorio.ufsc.br/bitstream/handle/123456789/116800/DICAS_SOBRE_COMO_ESCREVER_UM_ENSAIO.pdf?sequence=1
+	%
+	% 2. CORPO DO ENSAIO
+	%	Análise e desenvolvimento do tema escolhido
+	%		- Dê exemplos do texto que está a estudar
+	%		- Mencione bibliografia para justificar as suas ideias e conclusões
+	%		- Faça citações e comentários
+	% ---
+	
+	A promulgação da Constituição Federal de 1988 significou mudanças consideráveis no modelo de governança vigente, propondo uma transição do centralismo da ditadura militar e o reconhecimento de uma série de direitos básicos, como moradia, saúde, educação e transporte público, entretanto, a nova constituição não está livre de contradições, sobretudo aquelas ligadas a arranjos territoriais de maior complexidade e interdependência, como são as regiões metropolitanas. Autores como \citeonline[p. 117]{brandao2011a} argumentam que o pacto teria como objetivo final, produzido a partir de discussões, a implantação de um processo de descentralização administrativa, fiscal e política, o que envolve um discurso cujas bases balanceiam eficiência e eficácia ``na operação do aparato estatal, provisão, com equidade, de bens e serviços públicos e promoção de mecanismos redutores das assimetrias regionais''.
+	
+	O ideal autonomista e municipalista da Constituição Federal de 1988 pode ser compreendido como uma resposta contundente ao autoritarismo que marcou o país durante o período anterior à Constituinte \cite[p. 100]{guia2015a}. Destarte, podemos compreender a existência de um caráter disruptivo, porém não isento de contradições ainda hoje, como apontam \citeonline[p. 9]{linhares2012a}, para o qual as tensões envolvendo municípios, que então passaram a ser ineditamente reconhecidos como entes federados autônomos, ``assume novos contornos, e as contradições e os conflitos persistem em níveis ainda altos'' e \citeonline[p. 104]{guia2015a}, que assinalam que a noção de gestão democrática não é sinônimo de descentralização:
+	
+	\begin{citacao}
+		Como se viu, devido à tradição fortemente centralista do período militar, criou-se, nos primeiros anos da Nova República, um mito a respeito do processo de descentralização em políticas públicas, que passou a ser visto quase como sinônimo de gestão democrática, sendo considerado a priori algo desejável e capaz de proporcionar maior eficiência na formulação e implementação de políticas públicas. (\dots) Embora a descentralização em certas ocasiões possa ser mecanismo importante para maior eficácia, transparência e acesso a serviços e equipamentos urbanos, especialmente para a população carente, é terapia que não pode ser generalizada, estando longe de ser uma panacéia aplicável em qualquer caso.
+	\end{citacao}
+	
+	Por outro lado, a possibilidade de maior ``maior eficácia, transparência e acesso a serviços e equipamentos urbanos, especialmente para a população carente'' admitida por \citeonline[p. 104]{guia2015a}, dialoga com a análise do federalismo de \citeonline[p. 9]{linhares2012a}, para quem a Constituição Federal de 1988 representa a mudança para um ``um modelo de Estado centralizado, da unidade e da integração nacional'', e de \citeonline[p. 591]{arretche2010a}, para quem a combinação de uma interação entre atores que combina regulação centralizada do governo central e autonomia política dos governos locais, produzindo, no caso destes últimos, divergências, contribui para reduzir a desigualdade territorial:
+	
+	\begin{citacao}
+		(\dots) estados federativos que combinam regulação centralizada e autonomia política dos governos locais tendem a restringir os patamares da desigualdade territorial. Este resultado é explicado por duas tendências apenas aparentemente contraditórias, isto é, o papel regulatório do governo central opera no sentido da uniformidade, ao passo que a autonomia dos governos locais opera no sentido da divergência de políticas. Esta interação implica desigualdade entre as jurisdições, mas esta tende a variar no interior de certos intervalos. Nestes contextos, a desigualdade territorial tende a ser limitada.
+	\end{citacao}
+
+	Ainda em meados da década de 1990, começam a surgir ``diferentes formas de associações compulsórias, reguladas pelos três âmbitos de governo, com diversas modalidades voluntárias de cooperação metropolitana'' \cite[p. 104]{guia2015a}, que, como veremos na seção seguinte, continuam dominando o cenário da governança pública metropolitana do Brasil redemocratizado, entre elas, estão os consórcios públicos e as próprias regiões metropolitanas --- novas e pré-1988, que podem ter sido reorganizadas juridicamente\footnote{Vide o caso da Região Metropolitana de São Paulo, brevemente apontado em \citeonline[p. 63--64]{mundial2015a}.}.
+
+	\section{Desafios ligados à metropolização: disputas e conflitos}
+	
+	No âmbito da governança pública, uma série de desafios do ponto de vista do fato metropolitano: estes desafios, por sua vez, são acentuados não só pela regulamentação tardia de dispositivos reguladores da criação das figuras regionais associadas (nomeadamente RMs\footnote{Regiões Metropolitanas.}, AUs\footnote{Aglomerações Urbanas.} e RIDEs\footnote{Regiões Integradas de Desenvolvimento Econômico.}), representada principalmente pelo Estatuto da Metrópole\footnote{Para uma análise sintetizando horizontes de curto, médio e longo prazo, ver \citeonline[p. 21]{mundial2015a}; para uma discussão em torno dos limites e avanços do Estatuto da Metrópole no que diz respeito à constituição das figuras regionais pertinentes, ver \citeonline{mencio2017a}.} \cite{brasil2015a}, mas também pelo Estatuto da Cidade \cite{brasil2001a}, os desafios são acentuados pois hiato temporal e jurídico parece reforçar a ideia de que não só a Constituição Federal de 1988, mas também as constituições estaduais posteriores\footnote{Conforme \citeonline[p. 38]{mundial2015a}, a maioria das constituições estaduais menciona as RMs de maneira pouco detalhada e dissociada de objetivos, além disso, há os autores destacam que há casos de RMs cujos municípios membros não apresentam o dinamismo metropolitano esperado, ou seja, a institucionalidade não condiz com a materialidade do território.}, desprezaram a importância de um ``estatuto jurídico-político dos territórios que rompem as fronteiras estritamente municipais para assumirem contornos mais amplos e complexos'' \cite[p. 69]{souza2015a}, questão que na década de 1970 teria sido nevrálgica \cite[p. 69]{souza2015a}, sob o pretexto de não provocar o esvaziamento dos municípios \cite[p. 101]{guia2015a}. Como veremos posteriormente, o arranjo amadureceu para além da ``hegemonia de uma retórica municipalista exacerbada'' \cite[p. 106]{guia2015a}.
+	
+	Como apontado por \citeonline[p. 35]{mundial2015a}, os prefeitos possuem grau de autonomia suficiente para ``questionar as iniciativas públicas dos estados e estes a precisar da anuência dos municípios para fazer parte de um órgão metropolitano em particular'', o que abre a possibilidade de enfraquecer ``a capacidade das áreas metropolitanas de coordenar eficazmente a base e de aproximar as políticas centrais da população, com uma implementação local'' \apud[p. 35]{wetzel2013a}{mundial2015a}, ademais, o Estatuto da Metrópole não apresenta dispositivos objetivos de financiamento, abrindo meramente a possibilidade por parte do governo federal \cite[p. 20]{mundial2015a}, de forma que não modifica o cenário pré-existente, permeado por constituições estaduais também vagas na mesma matéria \cite[p. 101]{guia2015a}. A criticidade dos elementos de cunho fiscal e tributário também afeta os municípios, sendo muitas vezes expressa pela noção de que o volume de competências dos municípios não condiz com as receitas auferidas e capacidade de financiamento \cite[p. 19, 74]{cave2014a}, expondo a delicadeza do pacto federativo e suscitando disputas políticas em torno da busca por financiamentos oriundos do governo federal, uma vez que, como sustentado por \citeonline[p. 16]{cave2014a} no contexto dos desafios do desenvolvimento urbano, ``as transferências intergovernamentais de recursos permanecem como uma alavanca fundamental para os entes subnacionais''. A existência de uma intensa disputa fiscal é sustentada por \apudonline[p. 120]{abrucio1998a}{lassance2012a}:
+	
+	\begin{citacao}
+		Cooperação, coordenação e integração nem sempre formam um trinômio harmônico no federalismo brasileiro. Um quadro de fragmentação, de competição por recursos escassos e de estratégias de intensa disputa fiscal já foi considerado típico de um federalismo predatório.
+	\end{citacao}
+
+	Como exemplo da disputa fiscal e da dificuldade de harmonização, no contexto da cooperação interfederativa entre estados e municípios, ``importância estratégica da participação estadual na gestão metropolitana'' \cite[p. 103]{guia2015a}, os autores descrevem um relevante componente político-fiscal que provocou erosão das agências metropolitanas:
+
+	\begin{citacao}
+		Acredita-se que, nesse aspecto, o centro dos problemas enfrentados encontra-se na definição de critérios para o rateio das despesas e dos investimentos, questão diretamente vinculada à relação entre a cidade-pólo e os demais municípios que integram a região. Na ausência de regras claras, os municípios maiores de cada região metropolitana, bem como os governos estaduais, quase sempre resistem à regulamentação de instrumentos e mecanismos concretos de repasse de recursos para as agências metropolitanas, uma vez que temem aportar maior volume dos recursos sem necessariamente uma contrapartida proporcional no que respeita ao processo de tomada de decisão quanto à alocação desses recursos. Em uma situação como essa, os pressupostos elementares da lógica da ação coletiva indicam que o comportamento dos estados e dos municípios de maior peso não chega a surpreender, já que os custos financeiros seriam, via de regra, maiores do que os possíveis retornos políticos auferidos. \cite[p. 104]{guia2015a}
+	\end{citacao}
+	
+	A regulamentação dos consórcios públicos, também tardia em relação à Constituição Federal de 1988 \cite{brasil2005a}, contribuiu para sedimentar experiências dissociadas de uma orientação geral para os entes federativos, como o Consórcio Intermunicipal do ABC\footnote{Segundo \apudonline[p. 216]{trevelin2005a}{borin2009a}, o Consórcio Intermunicipal do ABC foi uma resposta a problemas comuns entre municípios, com busca de solução via cooperação devido à falta de estrutura na metrópole, visando a estruturação de uma diretriz para minimização dos problemas regionais.}, surgido em 1990 \cite[p. 398]{bresciani2015a}, mas não foi suficiente para eliminar flutuações intrinsecamente políticas. Em tese, os consórcios são pessoas jurídicas cuja composição decorre de uma compreensão pactuada entre os entes consorciados para solucionar problemas comuns, no entanto, disputas entre os atores podem fragilizar o consórcio, minando seu financiamento e protagonismo, principalmente porque os entes consorciados (municípios, estados, Distrito Federal e/ou a União) não são possuem compulsoriedade na adesão ou permanência, ou seja, trata-se de um modelo de \textbf{cooperação voluntária} \cite[p. 31]{mundial2015a}. Recuperando a avaliação feita por \citeonline[p. 104]{clementino2018a} no contexto de Natal, Rio Grande do Norte, podemos observar a existência de alguns componentes problemáticos, que reiteram as dificuldades de financiamento e de cooperação, assim, é nebuloso considerar o consórcio como a principal resposta para resolução de conflitos e questões de governança metropolitana:
+	
+	\begin{citacao}
+		Os municípios ainda não estão afeitos à utilização de mecanismos capazes de incorporar formas de gestão compartilhada, como os consórcios. A falta de recursos financeiros para subsidiar as ações conjuntas; as dificuldades de negociação entre as partes, bem como a inexistência de uma coordenação que seja reconhecida e legitimada pelos entes municipais são aspectos que evidenciam claramente a dificuldade de cooperação entre os	gestores metropolitanos.
+	\end{citacao}
+
+	Para \citeonline[p. 130]{brandao2011a}, pactuar responsabilidades, custos e benefícios é indispensável para atingir o equilíbrio entre eficiência e equidade. A abordagem de \citeonline[p. 130]{brandao2011a} sugere uma resposta ao dilema colocado parágrafos antes a partir de \citeonline[p. 104]{guia2015a} e \cite[p. 104]{clementino2018a}, que agora pode ser devidamente explicitado: como articular entes com portes e receitas tão desiguais, como um estado-membro e um município-polo em conjunto com municípios menores e mais frágeis? A partir do \textbf{asseguramento de espaços amplos de discussão}, capazes de balancear, de maneira justa, ônus e bônus da política pública em desenvolvimento.
+
+	Como introduzem \citeonline[p. 88]{linhares2012a}, no caso de temas ligados à dinâmica da metropolização, sua gestão depende ``fundamentalmente, da cooperação de entes municipais pouco estimulados ao estabelecimento de soluções cooperativas e pouco habituados a estas práticas'', sem descartar ``ambivalências e paradoxos'' inerentes a ela\footnote{Em relação à falta de estímulo, \citeonline[p. 38]{mundial2015a} salientam que o desinteresse por parte das cidades que integram regiões metropolitanas é um entrave para o bom funcionamento de instituições típicas, como agências metropolitanas.}. Apesar da complexidade e do cenário político com contornos conflituosos, não são menos interessantes que os avanços cenário pós-1988 apresentou; para \citeonline[p. 105]{guia2015a}, uma série de transformações podem ser elencadas, constituindo uma nova etapa, marcada pela \textbf{diversidade de padrões}:
+	
+	\begin{itemize}
+		\item Valorização da colaboração interfederativa, público-privada e entre governo e entidades da sociedade civil, neste último caso, via convênio;
+		\item Surgimento de novos desenhos institucionais: novos atores ou novos papéis para antigos atores, com destaque para ONGs\footnote{Organizações não governamentais.};
+		\item Conselhos participativos de políticas públicas supramunicipais;
+		\item Privatização de serviços públicos, com atores privados atuando como permissionários ou concessionários, impulsionados pelo processo de reforma que ganhava força naquele momento;
+		\item Novos papéis para os governos locais em redes supramunicipais, compulsórias ou voluntárias;
+		\item Crescimento do empenho normativo dos governos estaduais, a reboque da privatização e da colaboração com municípios para equacionamento de questões em escala regional e de gargalos locais de financiamento;
+		\item Retomada do protagonismo da União na regulação e criação de fontes de financiamento para temas estratégicos em escala regional;
+		\item Agências internacionais passam a atuar interfederativamente, dialogando com a União, estados e municípios, também observando temas estratégicos em escala regional.
+	\end{itemize}
+
+	Em outro extremo, a criação de figuras regionais, como regiões metropolitanas e aglomerações urbanas, de competência dos estados, impõe permanência compulsória dos municípios, inclusive transformando parte de suas obrigações, por exemplo, um município como Salesópolis, com cerca de 17 mil habitantes, estaria desobrigado de elaborar um plano diretor, no entanto, por fazer parte de uma região metropolitana, no caso, da RMSP\footnote{Região Metropolitana de São Paulo.}, passa a ser obrigado a elaborá-lo\footnote{Vide \citeonline[Art. 41, II]{brasil2001a} quanto à obrigatoriedade de plano diretor.}, sem que o estado-membro instituidor da região forneça contrapartidas de qualquer tipo. Parece uma abordagem contrária às políticas de concertação que o autor atrela à União Europeia, que estariam baseadas em contratos-programas e dotadas de definição criteriosa e territorializada \cite[p. 128]{brandao2011a}, no entanto, devido à globalização, tais políticas de origem europeia estão mudando drasticamente há mais de uma década\footnote{Para uma discussão sobre as transformações, ver \citeonline{brenner2010a}.}, de forma que explorá-las exigiria uma revisão bibliográfica que extrapolaria o escopo deste ensaio.
+
+	Ainda assim, a menção à União Europeia permite a recuperação de algumas aspectos importantes do continente europeu. Segundo \citeonline[p. 301]{klink2009a}, exceto por Madrid, a metrópole é ``uma aporia da descentralização''. \citeonline{klink2009a} também aponta a existência de uma espécie de limbo institucional em países como Itália (\textit{e.g.} Lei 142, que cria as cidades metropolitanas nunca executada) e a falta de avanços legislativos na Alemanha, Holanda e Reino Unido, ao contrário da França, que desde 1999 possui uma lei dispondo sobre a ``intercomunabilidade que cria comunidades de aglomeração'' \cite[p. 301]{klink2009a}. O autor sublinha ainda referendos nas cidades de Amsterdã, Roterdã e Berlim, feitos em meados dos anos 1990 e que resultaram na rejeição da criação de uma autoridade metropolitana.
+	
+	Para \citeonline{klink2009a}, ainda que os debates no âmbito acadêmico sejam muitos, a Europa tem buscado apenas sustentar uma administração funcional. O debate, que é permeado pela multiplicidade de pontos de vista, não necessariamente apresenta vencedores, em todo o caso, exemplos como o de Paris e Turim seriam positivos devido à existência de um amplo processo de articulação de múltiplos atores, uma vez que considera que a descentralização não contribui para dar vazão a uma ordem institucional que consagre o fato metropolitano politicamente, possivelmente uma afirmação capaz de sintetizar boa parte do panorama traçado pela revisão bibliográfica selecionada. Finalmente, a consideração de \citeonline{klink2009a} permite o estabelecimento de uma relação com \citeonline{brandao2011a} em virtude das ideias de \citeonline[p. 91]{frey2012a}, para quem:
+	
+	\begin{citacao}
+		A construção de uma efetiva governança em âmbito metropolitano ou regional, de caráter transescalar, intersetorial e democrático, exige inicialmente o reconhecimento do caráter político de tal empreendimento, a refutação de soluções tecnocráticas e, portanto, a promoção de arenas onde o embate entre diferentes percepções e interesses possa ocorrer.
+	\end{citacao}
+	
+	Finalmente, como apontam \citeonline[p. 59]{lubambo2017a}, nenhuma das RMs do país apresentam o cenário ideal quando consideradas as dimensões políticas, técnicas, financeiras e institucionais\footnote{Tais dimensões foram analisadas com o intuito de melhor compreender outra dimensão maior, ligada à mobilidade na RM do Recife, vide \citeonline{lubambo2017a}.}, ainda que os melhores casos digam respeito às regiões metropolitanas de São Paulo, Belo Horizonte e Recife, respectivamente. O panorama traçado pelos autores é especialmente oportuno, pois nos permite recuperar criticamente uma fração dos produtos das transformações institucionais apontadas por \citeonline{guia2015a}, sintetizadas na \autoref{tab:produtos}:
+	
+	\pagebreak
+	
+	\begin{center}
+		\begin{longtable}{|p{5.9cm}|p{7.5cm}|}
+			\caption{Produtos das transformações pós-1988 \textit{versus} parecer crítico}
+			\label{tab:produtos}\\
+			\hline
+			\textbf{Produto}                 & \textbf{Parecer crítico} \\ \hline
+			\endfirsthead
+			%
+			\endhead
+			%
+			Pactuação de empreendimentos entre diferentes atores &
+			\multirow{3}{*}{\parbox{1\linewidth}{\vspace{0.1cm} São, em todas as regiões do país, deficientes, assistemáticos, não institucionalizados para a gestão metropolitana}} \\ \cline{1-1}
+			Instrumentos de gestão das FPICs &                          \\ \cline{1-1}
+			Consórcios intermunicipais       &                          \\ \hline
+			Planos municipais setoriais &
+			Inexistentes ou, quando existentes, não costumam apresentar soluções integradas à escala metropolitana para as FPICs \\ \hline
+		\end{longtable}
+		\legend{Fonte: adaptação a partir de \citeonline[p. 105]{guia2015a} e \citeonline[p. 59]{lubambo2017a}}
+		\vspace{-8mm}
+	\end{center}
+	
+	\section{Conclusão}
+	% Estrutura segundo https://repositorio.ufsc.br/bitstream/handle/123456789/116800/DICAS_SOBRE_COMO_ESCREVER_UM_ENSAIO.pdf?sequence=1
+	%
+	% 3. CONCLUSÃO
+	%	Apresente os resultados da sua análise
+	%		- Quais as conclusões do seu trabalho?
+	%		- Poderá aqui introduzir um comentário pessoal ao tema
+	%		- Poderá  indicar  outras áreas  relacionadas  com  o  seu  tema  que  seria  interessante estudar e pesquisar 
+	%
+	% ---
+	
+	Considerando a revisão bibliográfica realizada, não há uma fórmula exata a ser aplicada para transformar a governança das regiões metropolitanas ou mesmo de outros arranjos em escala regional, o que poderia incluir, por exemplo, múltiplas regiões metropolitanas contíguas ou \textit{clusters} (agrupamentos) combinando o tecido urbano espraiado entre dois estados (tal como ocorre no Vale do Paraíba, entre São Paulo e Rio de Janeiro), no entanto, alguns dos desafios elencados pelos autores se destacam:
+	
+	\begin{enumerate}
+		\item Financiamento;
+		\item Coordenação;
+		\item Participação e diálogo;
+		\item Contratualização programática e territorialização.
+	\end{enumerate}
+
+	Estes quatro aspectos são constantemente mencionados e, após mais de trinta anos desde a promulgação da Constituição Federal de 1988, período no qual o Estado Brasileiro passou por reformas que (i) reescalonaram parte de suas atribuições à iniciativa privada ou organizações sociais, além de ter experienciado exercícios de democratização, ainda que talvez \textit{pro forma} em algumas situações; (ii) bem como modificaram o arcabouço jurídico institucional, outrossim, parece haver espaço para a sugestão de projetos mais cuidadosos, mais interdisciplinares e concebidos, desde o princípio, para envolver múltiplos entes, a partir da busca pela solução de problemas concretos.
+	
+	Considerando que as FPICs podem esbarrar nas carências infraestruturais, como ausência de rede de esgotamento sanitário, malha viária inadequada ou ausência de infraestrutura de transporte de massa \cite[p. 50--56]{mundial2015a}, por exemplo, a infraestrutura poderia ter um papel determinante na composição, motivando uma maior participação dos municípios.
+	
+	Considerando também a produção acadêmica e técnica em torno do tema, ainda que institucionalmente exista falta de capacidade e continuidade, é possível que outros atores da sociedade não sofram, necessariamente, dos mesmos problemas, podendo ajudar a sanar as atuais lacunas. Entre os atores figuram institutos de pesquisa e instituições públicas de ensino superior, além da esfera privada, que já atua no campo do planejamento. O devido mapeamento e aproveitamento dessa rede de atores pode ser importante, não só em termos de \textit{accountability} (prestação de contas), mas também para evitar a repetição dos mesmos ciclos de fragmentação e/ou incapacidade institucional.
+	
+	Acrescenta-se ainda, na arena da coordenação, participação e diálogo, a experiência de Belo Horizonte poderia ser aprimorada, para disseminar a ideia de Assembleia Metropolitana\footnote{O caso da RM de Belo Horizonte foi considerado como interessante por \citeonline[p. 73]{mundial2015a}; \citeonline[p. 100]{machado2009a} caracteriza a Assembleia Metropolitana da RM de Belo Horizonte como essencialmente municipalista.} a fim de se tornar o principal fórum para discussões interfederativas multi-escalares.
+	
+	% ---
+	% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+	% ---
+	\bookmarksetup{startatroot}% 
+	% ---
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PÓS-TEXTUAIS
+	% ----------------------------------------------------------
+	\postextual
+	
+	% ----------------------------------------------------------
+	% Referências bibliográficas
+	% ----------------------------------------------------------
+	\bibliography{fontes}
+	
+	% ----------------------------------------------------------
+	% Glossário
+	% ----------------------------------------------------------
+	% Consultar manual da classe abntex2 para orientações sobre o
+	% uso do glossário.
+	\renewcommand{\glossaryname}{Glossário}
+	%\renewcommand{\glossarypreamble}{Esta é a descrição do glossário.\\ \\}
+	\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}
+		\glsseelist{#2}}
+	
+	% ---
+	% Traduções para o ambiente glossaries
+	% ---
+	\providetranslation{Glossary}{Glossário}
+	\providetranslation{Acronyms}{Siglas}
+	\providetranslation{Notation (glossaries)}{Notação}
+	\providetranslation{Description (glossaries)}{Descrição}
+	\providetranslation{Symbol (glossaries)}{Símbolo}
+	\providetranslation{Page List (glossaries)}{Lista de Páginas}
+	\providetranslation{Symbols (glossaries)}{Símbolos}
+	\providetranslation{Numbers (glossaries)}{Números} 
+	% ---
+	
+	% ---
+	% Imprime o glossário
+	% ---
+	%\cleardoublepage
+	%\phantomsection
+	%\addcontentsline{toc}{section}{\glossaryname}
+	%\glossarystyle{index}
+	% \glossarystyle{altlisthypergroup}
+	% \glossarystyle{tree}
+	%\printglossaries
+	
+	% ----------------------------------------------------------
+	% Apêndices
+	% ----------------------------------------------------------
+	
+	% ---
+	% Inicia os apêndices
+	% ---
+	%	\begin{apendicesenv}
+	%		
+	%		% ----------------------------------------------------------
+	%		\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+	%			ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+	%		% ----------------------------------------------------------
+	%		\lipsum[55-57]
+	%		
+	%	\end{apendicesenv}
+	% ---
+	
+	% ----------------------------------------------------------
+	% Anexos
+	% ----------------------------------------------------------
+	%	\cftinserthook{toc}{AAA}
+	% ---
+	% Inicia os anexos
+	% ---
+	%\anexos
+	%	\begin{anexosenv}
+	%		
+	%		% ---
+	%		\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+	%			parturient montes nascetur ridiculus mus}
+	%		% ---
+	%		
+	%		\lipsum[31]
+	%		
+	%	\end{anexosenv}
+	
+\end{document}
